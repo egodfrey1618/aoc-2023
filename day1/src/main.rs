@@ -1,7 +1,11 @@
 use std::collections::HashMap;
 
 fn string_to_number(s: &str) -> usize {
-    let digits: Vec<usize> = s.chars().filter_map(|x| x.to_digit(10)).map(|x| x as usize).collect();
+    let digits: Vec<usize> = s
+        .chars()
+        .filter_map(|x| x.to_digit(10))
+        .map(|x| x as usize)
+        .collect();
 
     // The first and last digit - will deal with only one digit in the string.
     10 * digits[0] + digits[digits.len() - 1]
@@ -19,14 +23,17 @@ fn string_to_number2(s: &str) -> usize {
         ("six", 6),
         ("seven", 7),
         ("eight", 8),
-        ("nine", 9)]);
+        ("nine", 9),
+    ]);
 
     // I did this mutably rather than functionally like above.
     let mut position_to_digit = HashMap::<usize, usize>::new();
 
     for (i, c) in s.chars().enumerate() {
         match c.to_digit(10) {
-            Some(x) => { position_to_digit.insert(i, x as usize); }
+            Some(x) => {
+                position_to_digit.insert(i, x as usize);
+            }
             None => {
                 // See if this maps any of the digits.
                 for (&digit_word, digit_value) in digit_map.iter() {
@@ -39,8 +46,14 @@ fn string_to_number2(s: &str) -> usize {
     }
 
     let keys = position_to_digit.keys();
-    let min_key = keys.clone().min().expect("Expected at least one digit in the string");
-    let max_key = keys.clone().max().expect("Expected at least one digit in the string");
+    let min_key = keys
+        .clone()
+        .min()
+        .expect("Expected at least one digit in the string");
+    let max_key = keys
+        .clone()
+        .max()
+        .expect("Expected at least one digit in the string");
 
     10 * position_to_digit[min_key] + position_to_digit[max_key]
 }
