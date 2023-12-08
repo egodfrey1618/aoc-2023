@@ -172,7 +172,7 @@ fn part2(game: &Game) -> usize {
 }
 
 fn main() {
-    let game = read_lines(include_str!("input"));
+    let game = read_lines(include_str!("input2"));
 
     println!("Solution for part 1: {:?}", part1(&game));
     println!("Solution for part 2: {:?}", part2(&game));
