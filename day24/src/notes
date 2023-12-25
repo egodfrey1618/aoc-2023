@@ -1,0 +1,25 @@
+Today's was more chaotic than the other days. The rough route there:
+(1) The Rust code contains the solution for Part 1
+(2) The Jupyter notebook contains some hackery I did to guess some rough bounds on the velocity (below)
+(3) The Python code contains a solution for Part 2 which uses some bounds from the notebook.
+
+For the Python code - I was pickier than I could have been by assuming that the times could be rational numbers, not necessarily integers.
+If you assume integers, then I think it's easier - you only need to consider 1 direction at a time.
+(I took the GCD out, so need to consider each triple separately.)
+
+
+Different directions I tried in the notebook:
+(1, 0, 0)
+- X <= 11tr or X>= 448tr
+- V >= 293 or V <= -250
+
+(0, 1, 0)
+- Y <= 30tr, or 278tr <= Y <= 280tr, or Y > 559tr
+- V >= 945 or V <= -868 or 25 <= V <= 34. (Last one feels the most likely?)
+
+(0, 0, 1)
+- Few different possibilities.
+- Non-big possiblities for Z-velocity are {32, 33, 34, 35, 36, 37, 38, 39, 40}
+
+(1, 1, 1)
+- Non-big possibilities are [-292, -247]. Giving a range of small-ish for X.
